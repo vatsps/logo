@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>code editor</title>
+</head>
+<style>
+    #nav{
+      width:100%;
+      height:20px;
+      background-color:grey;
+      position:relative;
+     text-align: center;
+     background-image:linear-gradient( 80deg,
+    cyan,lightblue,cyan,lightblue
+    );
+      border-radius: 20px;
+    }
+    a{
+      margin:8px;
+      
+    }
+   
+    h1{
+      
+      text-align: center;
+         -webkit-background-clip:text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(black,blue);
+    font-family:"Comic Sans MS",cursive,sans-serif;
+    margin-bottom: 20px;
+    }
+    
+         
+      
+    textarea{
+      height:200px;
+      width:98%;
+      background-color: blue;
+      color:yellow;
+      font-family: "Lucida Console", "Courier New", monospace;
+    }
+    
+    iframe{
+      height:600px;
+      width:98%;
+     
+      
+    } 
+    
+    body{
+      background-color: whitesmoke;
+      font-family:"Comic Sans MS",cursive,sans-serif;
+      color:blue;
+    }
+</style>
+
+<body >
+  <div id="nav">
+       <a href="index.html">Home</a>
+    <a href="lessons.html">Lessons</a>
+    <a href="code.html"> Codes</a>
+       <a href="try.html">Try IDE</a>
+   
+    <a href="about.html"> About</a>
+  </div>
+  <h1>Code Space</h1>
+  <br><br>
+  html<br>
+  <textarea class="html_code" onkeyup="run()"></textarea><br>
+  css<br>
+    <textarea class="css_code" onkeyup="run()"></textarea> <br>
+    js<br>
+    <textarea class="js_code" onkeyup="run()"></textarea><br>
+    output<br>
+    <iframe id="result"></iframe>
+</body>
+
+<script >
+  
+  function run(){
+    var html= document.querySelector(".html_code").value;
+     var css= document.querySelector(".css_code").value; 
+     var js= document.querySelector(".js_code").value; 
+     var result= document.querySelector("#result");
+     
+     result.contentDocument.body.innerHTML=html + `<style>${css}</style>` ;
+     result.contentWindow.eval(js)
+     
+  }
+</script>
+</html>
